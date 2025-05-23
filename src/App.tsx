@@ -2,13 +2,16 @@ import React from "react";
 
 import "./App.css";
 import BrandList from "./components/brandList";
+import CategoryList from "./components/categoryList";
+import Home from "./pages/home";
+import { Route, Routes } from "react-router-dom";
 
-const App: React.FC = () => (
-  <>
-    <h1>Hello World!</h1>
-    <h2>Hello</h2>
-    <BrandList />
-  </>
-);
-
-export default App;
+export default function App() {
+  return (
+    <div className="App">
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
+    </div>
+  );
+}

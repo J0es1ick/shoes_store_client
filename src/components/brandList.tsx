@@ -43,10 +43,7 @@ export default function BrandList() {
 
   return (
     <div>
-      <h1>Brand list</h1>
-      <Button color="secondary" onClick={createBrand}>
-        Добавить бренд
-      </Button>
+      <h3>Бренды</h3>
       {brands.map((brand, index) => (
         <BrandItem brand={brand} key={brand.brand_id} />
       ))}

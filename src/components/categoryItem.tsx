@@ -1,19 +1,19 @@
 import React from "react";
-import { Brand } from "./brandList";
+import { Category } from "./categoryList";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 
 interface IProps {
-  brand: Brand;
-  onUpdate?: (updatedBrand: Brand) => void;
+  category: Category;
+  onUpdate?: (updatedcategory: Category) => void;
 }
 
-const updateBrand = async (brand: Brand) => {
+const updateCategory = async (category: Category) => {
   let method = "POST";
-  let url = "/api/brands";
-  if (brand.brand_id !== 0) {
+  let url = "/api/categories";
+  if (category.category_id !== 0) {
     method = "PUT";
-    url += `/${brand.brand_id}`;
+    url += `/${category.category_id}`;
   }
 
   const response = await fetch(url, {
@@ -21,7 +21,7 @@ const updateBrand = async (brand: Brand) => {
     headers: {
       "Content-type": "application/json",
     },
-    body: JSON.stringify(brand),
+    body: JSON.stringify(category),
   });
 
   if (!response.ok) {
@@ -30,8 +30,8 @@ const updateBrand = async (brand: Brand) => {
   return await response.json();
 };
 
-export default function BrandItem(props: IProps) {
-  const [name, setName] = React.useState<string>(props.brand.brand_name);
+export default function CategoryItem(props: IProps) {
+  const [name, setName] = React.useState<string>(props.category.category_name);
 
   const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setName(event.target.value);
@@ -39,8 +39,7 @@ export default function BrandItem(props: IProps) {
 
   return (
     <div>
-      <h4>Бренд: {name}</h4>
-      <h4>Страна: {props.brand.country}</h4>
+      <h4>Категория: {name}</h4>
     </div>
   );
 }
