@@ -1,7 +1,6 @@
 import React from "react";
 import { Brand } from "./brandList";
-import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
+import styles from "./brandItem.module.css";
 
 interface IProps {
   brand: Brand;
@@ -38,9 +37,17 @@ export default function BrandItem(props: IProps) {
   };
 
   return (
-    <div>
-      <h4>Бренд: {name}</h4>
-      <h4>Страна: {props.brand.country}</h4>
+    <div className={styles.brand_item}>
+      <input type="text" name="" id={styles.brand_name} placeholder={name} />
+      <h4>
+        Страна:{" "}
+        <input
+          type="text"
+          name=""
+          id={styles.brand_name}
+          placeholder={props.brand.country}
+        />
+      </h4>
     </div>
   );
 }

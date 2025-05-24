@@ -1,6 +1,6 @@
 import React from "react";
-import Button from "@mui/material/Button";
-import BrandItem from "./brandItem";
+import BrandItem from "../brands/brandItem";
+import styles from "./brandList.module.css";
 
 export interface Brand {
   brand_id: number;
@@ -42,7 +42,7 @@ export default function BrandList() {
   }, []);
 
   return (
-    <div>
+    <div className={styles.brand_list}>
       <h3>Бренды</h3>
       {brands.map((brand, index) => (
         <BrandItem brand={brand} key={brand.brand_id} />

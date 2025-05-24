@@ -1,0 +1,30 @@
+.brand_item {
+  border-bottom: 2px solid #e4e4e4;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.brand_item h4 {
+  font-family: "Inter", serif;
+  font-size: 15px;
+}
+
+#brand_name {
+  width: 20%;
+  height: 30px;
+  border-radius: 60px;
+  border-style: none;
+  outline: none;
+  font-family: "Inter", serif;
+  font-weight: 700;
+  font-size: 15px;
+}
+
+#brand_name::placeholder {
+  font-family: "Inter", serif;
+  font-weight: 700;
+  font-size: 15px;
+  margin-left: 15px;
+  margin-right: 15px;
+  color: #000000;
+}

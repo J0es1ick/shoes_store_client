@@ -36,6 +36,11 @@
   margin-right: 25px;
 }
 
+.header_left_ul li a {
+  text-decoration: none;
+  color: white;
+}
+
 .header_center {
   display: flex;
   align-items: center;
@@ -86,6 +91,14 @@
   border-style: none;
 }
 
+.header_mainbuttons img:not(.downMark) {
+  filter: invert(100%) sepia(0%) saturate(7499%) hue-rotate(180deg)
+    brightness(101%) contrast(103%);
+  max-width: 24px;
+  max-height: 24px;
+  margin-right: 10px;
+}
+
 .header_right_ul {
   font-family: "Inter", serif;
   color: white;
@@ -104,4 +117,9 @@
 
 .header_right_ul li:not(:last-of-type) {
   margin-right: 25px;
+}
+
+.header_right_ul li a {
+  text-decoration: none;
+  color: white;
 }

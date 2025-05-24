@@ -7,7 +7,7 @@ export default function News() {
       <h1 className={styles.heading}>Новости</h1>
       <div className={styles.news_feed}>
         <div>
-          <a href="index.html">
+          <a href="/">
             <img src="imgs/Screenshot_1.png" alt="new" />
           </a>
           <h2 className={styles.second_heading}>Lorem ipsum</h2>
@@ -19,7 +19,7 @@ export default function News() {
           </p>
         </div>
         <div>
-          <a href="index.html">
+          <a href="/">
             <img src="imgs/Screenshot_1.png" alt="new" />
           </a>
           <h2 className={styles.second_heading}>Lorem ipsum</h2>
@@ -31,7 +31,7 @@ export default function News() {
           </p>
         </div>
         <div>
-          <a href="index.html">
+          <a href="/">
             <img src="imgs/Screenshot_1.png" alt="new" />
           </a>
           <h2 className={styles.second_heading}>Lorem ipsum</h2>
@@ -43,7 +43,7 @@ export default function News() {
           </p>
         </div>
         <div>
-          <a href="index.html">
+          <a href="/">
             <img src="imgs/Screenshot_1.png" alt="new" />
           </a>
           <h2 className={styles.second_heading}>Lorem ipsum</h2>

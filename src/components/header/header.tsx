@@ -6,10 +6,18 @@ export default function Header() {
     <header className={styles.header}>
       <div className={styles.header_left}>
         <ul className={styles.header_left_ul}>
-          <li>Бренды</li>
-          <li>Категории</li>
-          <li>Поставщики</li>
-          <li>Продукты</li>
+          <li>
+            <a href="/brands">Бренды</a>
+          </li>
+          <li>
+            <a href="/categories">Категории</a>
+          </li>
+          <li>
+            <a href="/suppliers">Поставщики</a>
+          </li>
+          <li>
+            <a href="/products">Продукты</a>
+          </li>
         </ul>
       </div>
       <div className={styles.header_center}>
@@ -19,10 +27,13 @@ export default function Header() {
       </div>
       <div className={styles.header_right}>
         <ul className={styles.header_right_ul}>
-          <li>Каталог</li>
-          <li>Другие разделы</li>
+          <li>
+            <a href="/catalog">Каталог</a>
+          </li>
+          <li>Другие разделы ▼</li>
         </ul>
         <div className={styles.header_mainbuttons}>
+          <img src="imgs/яркость.svg" alt="brightness" />
           <button>Войти</button>
         </div>
       </div>
