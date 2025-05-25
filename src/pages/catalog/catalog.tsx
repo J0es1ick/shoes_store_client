@@ -1,9 +1,10 @@
 import React from "react";
-import Header from "../../components/header/header";
-import Footer from "../../components/footer/footer";
+import Header from "../../components/UI/header/header";
+import Footer from "../../components/UI/footer/footer";
 import CategoryList from "../../components/categories/categoryList";
 import BrandList from "../../components/brands/brandList";
 import styles from "./catalog.module.css";
+import Search from "../../components/UI/search/search";
 
 export default function Catalog() {
   return (
@@ -12,6 +13,7 @@ export default function Catalog() {
         <Header />
       </header>
       <main className={styles.main}>
+        <Search />
         <CategoryList />
         <BrandList />
       </main>

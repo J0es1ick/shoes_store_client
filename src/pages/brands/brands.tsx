@@ -1,8 +1,9 @@
 import React from "react";
 import styles from "./brands.module.css";
-import Header from "../../components/header/header";
+import Header from "../../components/UI/header/header";
 import BrandList from "../../components/brands/brandList";
-import Footer from "../../components/footer/footer";
+import Footer from "../../components/UI/footer/footer";
+import Search from "../../components/UI/search/search";
 
 export default function Brands() {
   return (
@@ -11,12 +12,7 @@ export default function Brands() {
         <Header />
       </header>
       <main className={styles.main}>
-        <input
-          type="text"
-          name=""
-          id={styles.navigation}
-          placeholder="Поиск по сайту..."
-        />
+        <Search />
         <BrandList />
       </main>
       <footer>

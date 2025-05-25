@@ -1,19 +1,19 @@
 import React from "react";
-import Header from "../../components/UI/header/header";
-import News from "../../components/UI/news/news";
-import style from "./home.module.css";
 import Footer from "../../components/UI/footer/footer";
+import Header from "../../components/UI/header/header";
+import styles from "./categories.module.css";
+import CategoryList from "../../components/categories/categoryList";
 import Search from "../../components/UI/search/search";
 
-export default function Home() {
+export default function Categories() {
   return (
     <>
       <header>
         <Header />
       </header>
-      <main className={style.main}>
+      <main className={styles.main}>
         <Search />
-        <News />
+        <CategoryList />
       </main>
       <footer>
         <Footer />
