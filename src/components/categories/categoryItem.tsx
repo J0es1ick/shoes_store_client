@@ -1,27 +1,29 @@
 import React from "react";
 import { Category } from "./categoryList";
-import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
+import styles from "./categoryItem.module.css";
 
 interface IProps {
   category: Category;
-  onUpdate?: (updatedcategory: Category) => void;
+  onUpdate?: (updatedCategory: Category) => void;
+  onError?: (error: string) => void;
+  onDelete?: (categoryId: number) => void;
 }
 
-const updateCategory = async (category: Category) => {
-  let method = "POST";
-  let url = "/api/categories";
-  if (category.category_id !== 0) {
-    method = "PUT";
-    url += `/${category.category_id}`;
-  }
+const updateCategory = async (category: Category): Promise<Category> => {
+  let method = category.category_id !== 0 ? "PATCH" : "POST";
+  const url =
+    category.category_id !== 0
+      ? `/api/categories/${category.category_id}`
+      : "/api/categories";
 
   const response = await fetch(url, {
     method: method,
     headers: {
       "Content-type": "application/json",
     },
-    body: JSON.stringify(category),
+    body: JSON.stringify({
+      category_name: category.category_name,
+    }),
   });
 
   if (!response.ok) {
@@ -30,16 +32,69 @@ const updateCategory = async (category: Category) => {
   return await response.json();
 };
 
-export default function CategoryItem(props: IProps) {
-  const [name, setName] = React.useState<string>(props.category.category_name);
+export default function CategoryItem({
+  category,
+  onUpdate,
+  onDelete,
+  onError,
+}: IProps) {
+  const [name, setName] = React.useState<string>(category.category_name);
 
-  const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setName(event.target.value);
+  const handleSubmit = async () => {
+    try {
+      const updatedCategory = await updateCategory({
+        ...category,
+        category_name: name,
+      });
+      onUpdate?.(updatedCategory);
+    } catch (error) {
+      console.error("Ошибка при обновлении:", error);
+      onError?.(error instanceof Error ? error.message : "Неизвестная ошибка");
+    }
+  };
+
+  const handleDelete = async () => {
+    if (!category.category_id || !onDelete) return;
+
+    if (!window.confirm("Вы уверены, что хотите удалить эту категорию?"))
+      return;
+
+    try {
+      const response = await fetch(`/api/categories/${category.category_id}`, {
+        method: "DELETE",
+      });
+
+      if (!response.ok) {
+        throw new Error("Ошибка при удалении");
+      }
+
+      onDelete(category.category_id);
+    } catch (error) {
+      onError?.(error instanceof Error ? error.message : "Ошибка при удалении");
+    }
   };
 
   return (
-    <div>
-      <h4>Категория: {name}</h4>
+    <div className={styles.category_item}>
+      <div>
+        <label htmlFor="category_name">Категория: </label>
+        <input
+          type="text"
+          id="category_name"
+          name="name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          className={styles.category_textarea}
+        />
+      </div>
+      <div className={styles.category_buttons}>
+        <button className={styles.category_button} onClick={handleSubmit}>
+          Сохранить
+        </button>
+        <button className={styles.category_button} onClick={handleDelete}>
+          Удалить
+        </button>
+      </div>
     </div>
   );
 }

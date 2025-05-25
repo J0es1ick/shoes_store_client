@@ -26,7 +26,7 @@ const updateBrand = async (brand: Brand): Promise<Brand> => {
   });
 
   if (!response.ok) {
-    throw new Error(`Ошибка HTTP! Статус: ${response.status}`);
+    throw new Error(`HTTP error! status: ${response.status}`);
   }
   return await response.json();
 };
@@ -45,7 +45,7 @@ export default function BrandItem({
       const updatedBrand = await updateBrand({
         ...brand,
         brand_name: name,
-        country,
+        country: country,
       });
       onUpdate?.(updatedBrand);
     } catch (error) {

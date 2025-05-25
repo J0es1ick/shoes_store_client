@@ -3,7 +3,7 @@ import styles from "./pagination.module.css";
 
 interface IProps {
   page: number;
-  totalBrands: number;
+  totalProps: number;
   loading: boolean;
   setPage: React.Dispatch<React.SetStateAction<number>>;
 }
@@ -11,7 +11,7 @@ interface IProps {
 export default function Pagination({
   page,
   loading,
-  totalBrands,
+  totalProps,
   setPage,
 }: IProps) {
   return (
@@ -24,7 +24,7 @@ export default function Pagination({
       </button>
       <span>{page}</span>
       <button
-        disabled={page * 8 >= totalBrands || loading}
+        disabled={page * 8 >= totalProps || loading}
         onClick={() => setPage((p) => p + 1)}
       >
         {">"}

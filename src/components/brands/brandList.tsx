@@ -136,7 +136,7 @@ export default function BrandList() {
           </div>
           <Pagination
             page={page}
-            totalBrands={totalBrands}
+            totalProps={totalBrands}
             loading={loading}
             setPage={setPage}
           />
