@@ -8,16 +8,12 @@ import Search from "../../components/UI/search/search";
 export default function Categories() {
   return (
     <>
-      <header>
-        <Header />
-      </header>
+      <Header />
       <main className={styles.main}>
         <Search />
         <CategoryList />
       </main>
-      <footer>
-        <Footer />
-      </footer>
+      <Footer />
     </>
   );
 }

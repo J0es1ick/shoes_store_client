@@ -8,16 +8,12 @@ import SupplierList from "../../components/suppliers/supplierList";
 export default function Suppliers() {
   return (
     <>
-      <header>
-        <Header />
-      </header>
+      <Header />
       <main className={styles.main}>
         <Search />
         <SupplierList />
       </main>
-      <footer>
-        <Footer />
-      </footer>
+      <Footer />
     </>
   );
 }

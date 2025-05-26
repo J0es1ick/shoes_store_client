@@ -8,16 +8,12 @@ import Search from "../../components/UI/search/search";
 export default function Home() {
   return (
     <>
-      <header>
-        <Header />
-      </header>
+      <Header />
       <main className={style.main}>
         <Search />
         <News />
       </main>
-      <footer>
-        <Footer />
-      </footer>
+      <Footer />
     </>
   );
 }

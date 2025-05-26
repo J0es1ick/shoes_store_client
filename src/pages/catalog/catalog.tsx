@@ -9,17 +9,13 @@ import Search from "../../components/UI/search/search";
 export default function Catalog() {
   return (
     <>
-      <header>
-        <Header />
-      </header>
+      <Header />
       <main className={styles.main}>
         <Search />
         <CategoryList />
         <BrandList />
       </main>
-      <footer>
-        <Footer />
-      </footer>
+      <Footer />
     </>
   );
 }

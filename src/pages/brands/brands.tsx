@@ -8,16 +8,12 @@ import Search from "../../components/UI/search/search";
 export default function Brands() {
   return (
     <>
-      <header>
-        <Header />
-      </header>
+      <Header />
       <main className={styles.main}>
         <Search />
         <BrandList />
       </main>
-      <footer>
-        <Footer />
-      </footer>
+      <Footer />
     </>
   );
 }

@@ -1,23 +1,19 @@
 import React from "react";
 import styles from "./products.module.css";
-import CategoryList from "../../components/categories/categoryList";
 import Footer from "../../components/UI/footer/footer";
 import Header from "../../components/UI/header/header";
 import Search from "../../components/UI/search/search";
+import ProductList from "../../components/products/productList";
 
 export default function Products() {
   return (
     <>
-      <header>
-        <Header />
-      </header>
+      <Header />
       <main className={styles.main}>
         <Search />
-        <CategoryList />
+        <ProductList />
       </main>
-      <footer>
-        <Footer />
-      </footer>
+      <Footer />
     </>
   );
 }
