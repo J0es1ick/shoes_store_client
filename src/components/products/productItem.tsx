@@ -117,18 +117,17 @@ export default function ProductItem({
           step="0.01"
         />
       </div>
-      <div>
+      <div className={styles.product_id_label}>
         <label htmlFor="product_brand">
           Бренд ID: {product.brand?.brand_id}
         </label>
       </div>
-      <div>
+      <div className={styles.product_id_label}>
         <label htmlFor="product_category">
           Категория ID: {product.category?.category_id}
         </label>
       </div>
-      ф
-      <div>
+      <div className={styles.product_id_label}>
         <label htmlFor="product_supplier">
           Поставщик ID: {product.supplier?.supplier_id}
         </label>
