@@ -4,10 +4,12 @@ import styles from "./categoryList.module.css";
 import CircularProgress from "@mui/material/CircularProgress";
 import Alert from "@mui/material/Alert";
 import Pagination from "../UI/pagination/pagination";
+import { Product } from "../products/productList";
 
 export interface Category {
   category_id: number;
   category_name: string;
+  products?: Product[];
 }
 
 const getCategories = async (

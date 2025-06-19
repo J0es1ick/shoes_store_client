@@ -36,7 +36,6 @@
 .create_category:hover {
   transition: 0.3s;
   padding: 11px 18px;
-  border-radius: 1.4vh;
   background: #333333;
   border-style: none;
 }

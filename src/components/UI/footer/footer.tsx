@@ -12,7 +12,7 @@ export default function Footer() {
           <li>О проекте</li>
         </ul>
         <p className={style.footer_mark}>
-          shoes store ©2024 <br />
+          shoes store ©2025 <br />
           Пользовательское соглашение
         </p>
       </div>

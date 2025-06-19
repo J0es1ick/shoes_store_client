@@ -87,6 +87,20 @@ export default function CategoryItem({
           className={styles.category_textarea}
         />
       </div>
+      {category.products && category.products.length > 0 ? (
+        <div className={styles.products}>
+          <h4>Продукты:</h4>
+          <ul>
+            {category.products.map((product) => (
+              <li key={product.product_id}>
+                {product.name} (ID: {product.product_id})
+              </li>
+            ))}
+          </ul>
+        </div>
+      ) : (
+        <p className={styles.noProducts}>Нет привязанных продуктов</p>
+      )}
       <div className={styles.category_buttons}>
         <button className={styles.category_button} onClick={handleSubmit}>
           Сохранить

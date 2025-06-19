@@ -9,7 +9,17 @@ interface IProps {
   onError?: (error: string) => void;
 }
 
-const updateProduct = async (product: Product): Promise<Product> => {
+interface ProductUpdateData {
+  product_id: number;
+  name: string;
+  description: string;
+  current_price: number;
+  brand_id?: number;
+  category_id?: number;
+  supplier_id?: number;
+}
+
+const updateProduct = async (product: ProductUpdateData): Promise<Product> => {
   const method = product.product_id !== 0 ? "PATCH" : "POST";
   const url =
     product.product_id !== 0
@@ -17,20 +27,19 @@ const updateProduct = async (product: Product): Promise<Product> => {
       : "api/products";
 
   const response = await fetch(url, {
-    method: method,
-    headers: {
-      "Content-type": "application/json",
-    },
+    method,
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       name: product.name,
       description: product.description,
       current_price: product.current_price,
+      brand_id: product.brand_id,
+      category_id: product.category_id,
+      supplier_id: product.supplier_id,
     }),
   });
 
-  if (!response.ok) {
-    throw new Error(`HTTP error! status: ${response.status}`);
-  }
+  if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
   return await response.json();
 };
 
@@ -44,8 +53,15 @@ export default function ProductItem({
   const [description, setDescription] = React.useState<string>(
     product.description
   );
-  const [price, setPrice] = React.useState<string>(
-    product.current_price.toString()
+  const [price, setPrice] = React.useState(product.current_price.toString());
+  const [brandId, setBrandId] = React.useState(
+    product.brand?.brand_id?.toString() || ""
+  );
+  const [categoryId, setCategoryId] = React.useState(
+    product.category?.category_id?.toString() || ""
+  );
+  const [supplierId, setSupplierId] = React.useState(
+    product.supplier?.supplier_id?.toString() || ""
   );
 
   const handleSubmit = async () => {
@@ -55,6 +71,9 @@ export default function ProductItem({
         name,
         description,
         current_price: parseFloat(price),
+        brand_id: brandId ? parseInt(brandId) : undefined,
+        category_id: categoryId ? parseInt(categoryId) : undefined,
+        supplier_id: supplierId ? parseInt(supplierId) : undefined,
       });
       onUpdate?.(updatedProduct);
     } catch (error) {
@@ -81,6 +100,18 @@ export default function ProductItem({
     } catch (error) {
       onError?.(error instanceof Error ? error.message : "Ошибка при удалении");
     }
+  };
+
+  const handleBrandChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setBrandId(e.target.value);
+  };
+
+  const handleCategoryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setCategoryId(e.target.value);
+  };
+
+  const handleSupplierChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSupplierId(e.target.value);
   };
 
   return (
@@ -117,27 +148,47 @@ export default function ProductItem({
           step="0.01"
         />
       </div>
-      <div className={styles.product_id_label}>
-        <label htmlFor="product_brand">
-          Бренд ID: {product.brand?.brand_id}
-        </label>
+      <div>
+        <label htmlFor="product_brand">Бренд ID: </label>
+        <input
+          type="number"
+          id="product_brand"
+          value={brandId || ""}
+          onChange={handleBrandChange}
+          className={styles.product_textarea}
+          min="1"
+        />
       </div>
-      <div className={styles.product_id_label}>
-        <label htmlFor="product_category">
-          Категория ID: {product.category?.category_id}
-        </label>
+      <div>
+        <label htmlFor="product_category">Категория ID: </label>
+        <input
+          type="number"
+          id="product_category"
+          value={categoryId || ""}
+          onChange={handleCategoryChange}
+          className={styles.product_textarea}
+          min="1"
+        />
       </div>
-      <div className={styles.product_id_label}>
-        <label htmlFor="product_supplier">
-          Поставщик ID: {product.supplier?.supplier_id}
-        </label>
+      <div>
+        <label htmlFor="product_supplier">Поставщик ID: </label>
+        <input
+          type="number"
+          id="product_supplier"
+          value={supplierId || ""}
+          onChange={handleSupplierChange}
+          className={styles.product_textarea}
+          min="1"
+        />
       </div>
       {product.sizes && product.sizes.length > 0 ? (
         <div className={styles.sizes}>
           <h4>Размеры:</h4>
           <ul>
             {product.sizes.map((size) => (
-              <li key={size.size_id}>{size.size_value}</li>
+              <li>
+                Размер: {size.size} (ID: {size.product_id})
+              </li>
             ))}
           </ul>
         </div>

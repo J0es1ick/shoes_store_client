@@ -121,7 +121,9 @@ export default function SupplierItem({
           <h4>Продукты:</h4>
           <ul>
             {supplier.products.map((product) => (
-              <li key={product.product_id}>ID: {product.product_id}</li>
+              <li key={product.product_id}>
+                {product.name} (ID: {product.product_id})
+              </li>
             ))}
           </ul>
         </div>

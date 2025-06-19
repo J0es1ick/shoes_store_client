@@ -4,11 +4,13 @@ import styles from "./brandList.module.css";
 import CircularProgress from "@mui/material/CircularProgress";
 import Alert from "@mui/material/Alert";
 import Pagination from "../UI/pagination/pagination";
+import { Product } from "../products/productList";
 
 export interface Brand {
   brand_id: number;
   brand_name: string;
   country: string;
+  products?: Product[];
 }
 
 const getBrands = async (

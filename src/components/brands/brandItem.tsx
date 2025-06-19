@@ -98,6 +98,20 @@ export default function BrandItem({
           className={styles.brand_textarea}
         />
       </div>
+      {brand.products && brand.products.length > 0 ? (
+        <div className={styles.products}>
+          <h4>Продукты:</h4>
+          <ul>
+            {brand.products.map((product) => (
+              <li key={product.product_id}>
+                {product.name} (ID: {product.product_id})
+              </li>
+            ))}
+          </ul>
+        </div>
+      ) : (
+        <p className={styles.noProducts}>Нет привязанных продуктов</p>
+      )}
       <div className={styles.brand_buttons}>
         <button className={styles.brand_button} onClick={handleSubmit}>
           Сохранить

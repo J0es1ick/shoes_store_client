@@ -89,7 +89,6 @@
 .product_button:hover {
   transition: 0.3s;
   padding: 11px 18px;
-  border-radius: 1.4vh;
   background: #333333;
   border-style: none;
 }
@@ -119,6 +118,8 @@
 
 .sizes li {
   border-bottom: 1px solid #ddd;
+  padding-bottom: 5px;
+  padding-top: 5px;
 }
 
 .noSizes {
